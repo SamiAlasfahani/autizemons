@@ -31,15 +31,19 @@ Apescu -> bottle smash (hits target with a bottle dealing % own max hp physical 
 Topoularge -> baby rage (screams, increasing target enemy skill counter by 2)
 Shareerean -> lazeezify (puts lazeez sauce on target enemy autizemon and eats them dealing % enemy max hp special damage and heals self by % damage dealt), rollout (raises self speed by 1 stage, deals % self hp physical damage) 
 
-(Sketchy, beasts Smart, losses to Fat)
+(Sketchy, beats Smart, losses to Fat)
 Arteus -> cek slash (slashes target dealing % phys damage with a chance to make them bleed), cek fury (slashes 3 random targets dealing % phys damage), NIGGER!!! (arteus screams profanities raising active enemy autizemon skill timers by 1 with a chance to confuse)
 Urbinado -> stain (steals and uses target enemy ability, resetting enemy skill counter)
 Stebino -> disease (poisons self, increases phys, speed, luck by 4 *stages*), mellow out (stebino and active ally smoke blunts, clearing their status conditions and boosting def and spdef by 1)
 Ivape -> vape'n'rape (resets all active autizemon stat changes, then deals % phys damage to all active enemy autizemons of opposite gender, lowers all hit active sleeping enemy autizemon stats by 2)
 
+(God, beats all, losses to none)
+Master Kwan -> Last Breath (maximizes all own stats)
+Nassifer -> Chaos Code (deals flat damage and minimizes random stat of target, hits 6 times)
+
 ramattacks:
 
 knee touch (minimizes all active enemy autizemon's speed)
-flash (deals flat damage ignoring defenses and resistances to target and confuses them)
+flash (deals flat damage to target and confuses them)
 jack off (fails)
-racoon strike (slashes dealing flat damage ignoring defenses and resistances, with chance to poison target enemy autizemon)
+racoon strike (slashes dealing flat damage with chance to poison target enemy autizemon)
