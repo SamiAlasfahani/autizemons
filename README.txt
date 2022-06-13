@@ -39,11 +39,10 @@ Ivape -> vape'n'rape (resets all active autizemon stat changes, then deals % phy
 
 (God, beats all, losses to none)
 Master Kwan -> Last Breath (maximizes all own stats)
-Nassifer -> Chaos Code (deals % spec damage and minimizes random stat of target, hits 6 times)
 
 ramattacks:
 
-knee touch (minimizes all active enemy autizemon's speed)
-flash (deals flat damage to target and confuses them)
+knee touch (deals flat damage to random enemy autizemon with a chance to lower their speed by 2, hits 4 times)
+flash (deals flat damage to target with a chance to confuse them)
 jack off (fails)
-racoon strike (slashes dealing flat damage with chance to poison target enemy autizemon)
+racoon strike (slashes target dealing % enemy missing hp physical damage with a chance to poison, % chance to hit twice, % chance to hit 3 times, % chance to hit 5 times)
