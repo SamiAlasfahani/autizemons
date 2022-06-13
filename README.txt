@@ -29,7 +29,7 @@ Boilol -> harsh lesson (deals flat damage to ally and boosts their spec by 2), e
 Samu -> explosion (kills all active autizemons), summon rami (summons rami to do a random ramattack)
 Apescu -> bottle smash (hits target with a bottle dealing % own max hp physical damage, % chance to hit twice, % chance to hit 3 times), glass grenade (causes all active autizemons to bleed), jewish flashbang (deals flat damage to all other active autizemons, and increases their luck by 1), futa-ify (changes all active autizemons' genders)
 Topoularge -> baby rage (screams, increasing target enemy skill counter by 2)
-Shareerean -> lazeezify (puts lazeez sauce on target enemy autizemon and eats them dealing % enemy max hp special damage and heals self by % damage dealt), rollout (raises self speed by 1 stage, deals % self hp physical damage) 
+Shareerean -> lazeezify (puts lazeez sauce on target enemy autizemon and eats them dealing % enemy max hp special damage and heals self by % damage dealt), rollout (raises self speed by 1 stage, deals % self max hp physical damage) 
 
 (Sketchy, beats Smart, losses to Fat)
 Arteus -> cek slash (slashes target dealing % phys damage with a chance to make them bleed), cek fury (slashes 3 random targets dealing % phys damage), NIGGER!!! (arteus screams profanities raising active enemy autizemon skill timers by 1 with a chance to confuse)
