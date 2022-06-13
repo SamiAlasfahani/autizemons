@@ -32,7 +32,7 @@ public class Autizemon{
 	private int stage_luck;
 	private int stage_speed;
 	
-	public Autizemon(String _name, Type type, boolean gender, Skill skill, Status _status, int hp, int phys, int spec, int def, int spdef, int luck, int speed){
+	public Autizemon(String _name, Type type, boolean gender, Skill skill, int hp, int phys, int spec, int def, int spdef, int luck, int speed){
 		name = _name;
 		status = new Status("healthy");
 		isAlive = true;
