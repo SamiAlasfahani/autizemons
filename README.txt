@@ -39,7 +39,7 @@ Ivape -> vape'n'rape (resets all active autizemon stat changes, then deals % phy
 
 (God, beats all, losses to none)
 Master Kwan -> Last Breath (maximizes all own stats)
-Nassifer -> Chaos Code (deals flat damage and minimizes random stat of target, hits 6 times)
+Nassifer -> Chaos Code (deals % spec damage and minimizes random stat of target, hits 6 times)
 
 ramattacks:
 
