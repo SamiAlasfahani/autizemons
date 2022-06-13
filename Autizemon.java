@@ -35,8 +35,8 @@ public class Autizemon{
 	public Autizemon(String _name, Type type, boolean gender, Skill skill, Status _status, int hp, int phys, int spec, int def, int spdef, int luck, int speed){
 		name = _name;
 		status = new Status("healthy");
-		isAlive = true;
 		
+		isAlive = true;
 		base_type = type;
 		base_gender = gender;
 		base_skill = skill;
@@ -146,17 +146,31 @@ public class Autizemon{
 	public void timerDown(int amount){skill.timerDown(amount);}
 	public void timerUp(int amount){skill.timerUp(amount);}
 	
-	public void attack(Gamestate g){
-		//select target
-		//target.takeDamage();
-		//check kill
-		//check victory
+	public void attack(int myPos, ArrayList<Autizemon> enemies){
+		Autizemon target;
+		if(enemies.get(myPos).isAlive) target = enemies.get(myPos);
+		else if(!enemies.get(myPos).isAlive && enemies.get(1-myPos)) target = enemies.get(1-myPos);
+		else {
+			System.out.println("The attack failed!");
+			return;
+		}
+		
+		int damage = calculateDamage();
+		target.takeDamage(damage);
+		System.out.println("Hit for " + damage + " damage!");
 	}
 	
 	public void activateSkill(Gamestate g){
 		skill.activate(g);
 		//check victory
 		skill.timerReset();
+	}
+	
+	public static int calculateDamage(int attack, int defense, Type attackerType, Type defenderType, boolean isCritical){
+		int damage = ((4200*(attack/defense))/50)+2;
+		damage *= 0.85 + math.Random() * (1 - 0.85);
+		if(isCritial) damage *= 2;
+		if(defenderType.weakness.equals(attackerType.name)) damage *= 2;
 	}
 
 	public void resetPhys(){stage_phys = 0; }
