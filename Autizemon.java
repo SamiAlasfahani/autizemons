@@ -146,7 +146,7 @@ public class Autizemon{
 	public void timerDown(int amount){skill.timerDown(amount);}
 	public void timerUp(int amount){skill.timerUp(amount);}
 	
-	public void attack(int myPos, ArrayList<Autizemon> enemies){
+	public boolean attack(int myPos, ArrayList<Autizemon> enemies){
 		Autizemon target;
 		if(enemies.get(myPos).isAlive) target = enemies.get(myPos);
 		else if(!enemies.get(myPos).isAlive && enemies.get(1-myPos)) target = enemies.get(1-myPos);
@@ -158,10 +158,12 @@ public class Autizemon{
 		int damage = calculateDamage();
 		target.takeDamage(damage);
 		System.out.println("Hit for " + damage + " damage!");
+		
+		return target.isAlive;
 	}
 	
-	public void activateSkill(Gamestate g){
-		skill.activate(g);
+	public void activateSkill(int myPos, Autizemon ally, ArrayList<Autizemon> enemies){
+		skill.activate(myPos, Autizemon ally, ArrayList<Autizemon> enemies);
 		//check victory
 		skill.timerReset();
 	}
@@ -172,35 +174,40 @@ public class Autizemon{
 		if(isCritial) damage *= 2;
 		if(defenderType.weakness.equals(attackerType.name)) damage *= 2;
 	}
-
-	public void resetPhys(){stage_phys = 0; }
-	public void resetSpec(){stage_spec = 0; }
-	public void resetDef(){stage_def = 0; }
-	public void resetSpdef(){stage_spdef = 0; }
-	public void resetLuck(){stage_luck = 0; }
-	public void resetSpeed(){stage_speed = 0;}
 	
-	public void maxPhys(){stage_phys = MAX_STAGE; }
-	public void maxSpec(){stage_spec = MAX_STAGE; }
-	public void maxDef(){stage_def = MAX_STAGE; }
-	public void maxSpdef(){stage_spdef = MAX_STAGE; }
-	public void maxLuck(){stage_luck = MAX_STAGE; }
-	public void maxSpeed(){stage_speed = MAX_STAGE; }
-	
-	public void minPhys(){stage_phys = MIN_STAGE; }
-	public void minSpec(){stage_spec = MIN_STAGE; }
-	public void minDef(){stage_def = MIN_STAGE; }
-	public void minSpdef(){stage_spdef = MIN_STAGE; }
-	public void minLuck(){stage_luck = MIN_STAGE; }
-	public void minSpeed(){stage_speed = MIN_STAGE; }
+	public void modifyStatStage(int statStage, int amount){
+		if(amount < 0){
+			for(int i = 0; i<Math.abs(amount); i++){
+				if(statStage - 1 < MIN_STAGE){
+					System.out.println("But it's stats couldn't get any lower!");
+					break;
+				}
+				statStage--;
+			}
+			return;
+		}
+		
+		for(int i = 0; i<amount; i++){
+			if(statStage + 1 > MAX_STAGE){
+				System.out.println("But it's stats were already maxed out!");
+				break;
+			}
+			statStage++;
+		}
+		return;
+	}
+	public void resetStatStage(int statStage){statStage = 0;}
+	public void maxStatStage(int statStage){statStage = MAX_STAGE;}
+	public void minStatStage(int statStage){statStage = MIN_STAGE;}
+	public int calcCurStat(int base, int stage){return stage >= 0 ? base + (0.5 * stage * base) : base + (-0.10 * stage * base);}
 	
 	public void resetAll(){
-		resetPhys();
-		resetSpec();
-		resetDef();
-		resetSpdef();
-		resetLuck();
-		resetSpeed();
+		resetStatStage(stage_phys);
+		resetStatStage(stage_spec);
+		resetStatStage(stage_def);
+		resetStatStage(stage_spdef);
+		resetStatStage(stage_luck);
+		resetStatStage(stage_speed);
 	}
 	
 	public void refresh(){
