@@ -69,65 +69,21 @@ public class Autizemon{
 		status.setStatus(newStatus);
 	}
 	
-	public void boostPhys(int newBoost){
-		if(stage_phys + newBoost > MAX_STAGE) return;
-		stage_phys += newBoost;
-	}
+	public Type getType(){return base_type;}
 	
-	public void boostSpec(int newBoost){
-		if(stage_spec + newBoost > MAX_STAGE) return;
-		stage_spec += newBoost;
-	}
+	public int getBasePhys(){return base_phys;}
+	public int getBaseSpec(){return base_spec;}
+	public int getBaseDef(){return base_def;}
+	public int getBaseSpdef(){return base_spdef;}
+	public int getBaseLuck(){return base_luck;}
+	public int getBaseSpeed(){return base_speed;}
 	
-	public void boostDef(int newBoost){
-		if(stage_def + newBoost > MAX_STAGE) return;
-		stage_def += newBoost;
-	}
-	
-	public void boostSpdef(int newBoost){
-		if(stage_spdef + newBoost > MAX_STAGE) return;
-		stage_spdef += newBoost;
-	}
-	
-	public void boostLuck(int newBoost){
-		if(stage_luck + newBoost > MAX_STAGE) return;
-		stage_luck += newBoost;
-	}
-	
-	public void boostSpeed(int newBoost){
-		if(stage_speed + newBoost > MAX_STAGE) return;
-		stage_speed += newBoost;
-	}
-	//
-	public void knockPhys(int newBoost){
-		if(stage_phys - newBoost < MIN_STAGE) return;
-		stage_phys -= newBoost;
-	}
-	
-	public void knockSpec(int newBoost){
-		if(stage_spec - newBoost < MIN_STAGE) return;
-		stage_spec -= newBoost;
-	}
-	
-	public void knockDef(int newBoost){
-		if(stage_def - newBoost < MIN_STAGE) return;
-		stage_def -= newBoost;
-	}
-	
-	public void knockSpdef(int newBoost){
-		if(stage_spdef - newBoost < MIN_STAGE) return;
-		stage_spdef -= newBoost;
-	}
-	
-	public void knockLuck(int newBoost){
-		if(stage_luck - newBoost < MIN_STAGE) return;
-		stage_luck -= newBoost;
-	}
-	
-	public void knockSpeed(int newBoost){
-		if(stage_speed - newBoost < MIN_STAGE) return;
-		stage_speed -= newBoost;
-	}
+	public int getStagePhys(){return stage_phys;}
+	public int getStageSpec(){return stage_spec;}
+	public int getStageDef(){return stage_def;}
+	public int getStageSpdef(){return stage_spdef;}
+	public int getStageLuck(){return stage_luck;}
+	public int getStageSpeed(){return stage_speed;}
 	
 	public void takeDamage(int damage){
 
@@ -155,7 +111,10 @@ public class Autizemon{
 			return;
 		}
 		
-		int damage = calculateDamage();
+		//check for crit
+		boolean didCrit = true;
+		
+		int damage = Autizemon.calculateDamage(calcCurStat(base_phys, stage_phys), calcCurStat(target.getBaseDef(), target.getStageDef()), cur_type, target.getType(), didCrit);
 		target.takeDamage(damage);
 		System.out.println("Hit for " + damage + " damage!");
 		
@@ -175,7 +134,7 @@ public class Autizemon{
 		if(defenderType.weakness.equals(attackerType.name)) damage *= 2;
 	}
 	
-	public void modifyStatStage(int statStage, int amount){
+	public int modifyStatStage(int statStage, int amount){
 		if(amount < 0){
 			for(int i = 0; i<Math.abs(amount); i++){
 				if(statStage - 1 < MIN_STAGE){
@@ -184,7 +143,7 @@ public class Autizemon{
 				}
 				statStage--;
 			}
-			return;
+			return statStage;
 		}
 		
 		for(int i = 0; i<amount; i++){
@@ -194,21 +153,40 @@ public class Autizemon{
 			}
 			statStage++;
 		}
-		return;
+		return statStage;
 	}
-	public void resetStatStage(int statStage){statStage = 0;}
-	public void maxStatStage(int statStage){statStage = MAX_STAGE;}
-	public void minStatStage(int statStage){statStage = MIN_STAGE;}
-	public int calcCurStat(int base, int stage){return stage >= 0 ? base + (0.5 * stage * base) : base + (-0.10 * stage * base);}
+	
+	public void resetPhys(){stage_phys = 0;}
+	public void resetSpec(){stage_spec = 0;}
+	public void resetDef(){stage_def = 0;}
+	public void resetSpdef(){stage_spdef = 0;}
+	public void resetLuck(){stage_luck = 0;}
+	public void resetSpeed(){stage_speed = 0;}
 	
 	public void resetAll(){
-		resetStatStage(stage_phys);
-		resetStatStage(stage_spec);
-		resetStatStage(stage_def);
-		resetStatStage(stage_spdef);
-		resetStatStage(stage_luck);
-		resetStatStage(stage_speed);
+		resetPhys();
+		resetSpec();
+		resetDef();
+		resetSpdef();
+		resetLuck();
+		resetSpeed();
 	}
+	
+	public void maxPhys(){stage_phys = MAX_STAGE;}
+	public void maxSpec(){stage_spec = MAX_STAGE;}
+	public void maxDef(){stage_def = MAX_STAGE;}
+	public void maxSpdef(){stage_spdef = MAX_STAGE;}
+	public void maxLuck(){stage_luck = MAX_STAGE;}
+	public void maxSpeed(){stage_speed = MAX_STAGE;}
+	
+	public void minPhys(){stage_phys = MIN_STAGE;}
+	public void minSpec(){stage_spec = MIN_STAGE;}
+	public void minDef(){stage_def = MIN_STAGE;}
+	public void minSpdef(){stage_spdef = MIN_STAGE;}
+	public void minLuck(){stage_luck = MIN_STAGE;}
+	public void minSpeed(){stage_speed = MIN_STAGE;}
+	
+	public int calcCurStat(int base, int stage){return stage >= 0 ? base + (0.5 * stage * base) : base + (-0.10 * stage * base);}
 	
 	public void refresh(){
 		cur_type = base_type;
