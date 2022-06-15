@@ -69,7 +69,21 @@ public class Autizemon{
 		status.setStatus(newStatus);
 	}
 	
-	public Type getType(){return base_type;}
+	public String getName(){return name;}
+	
+	public Status getStatus(){return status;}
+	
+	public boolean getBaseGender(){return base_gender;}
+	public boolean getCurGender(){return cur_gender;}
+	
+	public Skill getBaseSkill(){return base_skill;}
+	public Skill getCurSkill(){return cur_skill;}
+	
+	public Type getBaseType(){return base_type;}
+	public Type getCurType(){return cur_type;}
+	
+	public boolean getBaseGender(){return base_gender;}
+	public boolean getCurGender(){return cur_gender;}
 	
 	public int getBasePhys(){return base_phys;}
 	public int getBaseSpec(){return base_spec;}
